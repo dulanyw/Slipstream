@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slipstream</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Slipstream</h1>
+        <form action="{{ url_for('add_task') }}" method="POST" class="mb-4">
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" class="form-control" name="task_description" placeholder="Task Description" required>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="customer" placeholder="Customer" required>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="next_step_owner" placeholder="Next Step Owner" required>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="status" placeholder="Status" required>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="information" placeholder="Information" required>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="links" placeholder="Links" required>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </div>
+            </div>
+        </form>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Task Description</th>
+                    <th>Customer</th>
+                    <th>Next Step Owner</th>
+                    <th>Status</th>
+                    <th>Information</th>
+                    <th>Links</th>
+                    <th>Creation Date</th>
+                    <th>Update Date</th>
+                    <th>Completion Date</th>
+                    <th>Task Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                <tr>
+                    <td>{{ task[0] }}</td>
+                    <td>{{ task[1] }}</td>
+                    <td>{{ task[2] }}</td>
+                    <td>{{ task[3] }}</td>
+                    <td>{{ task[4] }}</td>
+                    <td>{{ task[5] }}</td>
+                    <td>{{ task[6] }}</td>
+                    <td>{{ task[7] }}</td>
+                    <td>{{ task[8] }}</td>
+                    <td>{{ task[9] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
